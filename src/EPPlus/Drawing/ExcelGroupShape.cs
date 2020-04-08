@@ -61,6 +61,12 @@ namespace OfficeOpenXml.Drawing
                         continue;
                 }
                 _groupDrawings.Add(grpDraw);
+                int i = 0;
+                while (_parent._drawings._drawingNames.ContainsKey(grpDraw.Name))
+                {
+                    grpDraw.Name = $"{grpDraw.Name} {i}";
+                    i++;
+                }
                 _parent._drawings._drawingNames.Add(grpDraw.Name, _groupDrawings.Count-1);
             }
         }
